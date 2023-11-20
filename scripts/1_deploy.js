@@ -1,13 +1,13 @@
-const { ethers } = require("hardhat");
+const { ethers } = require('hardhat');
 
 async function main() {
   // Fetching the Contract to deploy.
-  const TokenContract = await ethers.getContractFactory("Token");
+  const TokenContractFactory = await ethers.getContractFactory('Token');
 
   // Deploying the fetched Contract.
-  const token = await TokenContract.deploy();
-  await token.deployed();
-  console.log(`Token deployed to address ${token.address}.`);
+  const TokenContract = await TokenContractFactory.deploy('Token', 'TOK', 1000000);
+  await TokenContract.deployed();
+  console.log(`Token deployed to address ${TokenContract.address}.`);
 }
 
 main().catch((error) => {
